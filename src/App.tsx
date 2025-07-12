@@ -9,11 +9,11 @@ const CITIES = [
 	},
 	{
 		id: 2,
-		name: "Tokyo",
+		name: "São Paulo",
 	},
 	{
 		id: 3,
-		name: "Dubai",
+		name: "Cairo",
 	},
 ];
 

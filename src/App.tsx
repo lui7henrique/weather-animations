@@ -1,5 +1,6 @@
 import { format } from "date-fns";
-import cloudy from "./assets/cloudy.webp";
+import clear from "./assets/clear.webp";
+import snow from "./assets/snow.webp";
 
 const WEATHERS = [
 	{
@@ -7,9 +8,18 @@ const WEATHERS = [
 		name: "Suzano",
 		description: "Cloudy",
 		temperature: 20,
-		image: cloudy,
+		image: clear,
 		high: 25,
 		low: 15,
+	},
+	{
+		id: 2,
+		name: "Caxias do Sul",
+		description: "Snow",
+		temperature: 20,
+		image: snow,
+		high: 20,
+		low: 10,
 	},
 ];
 

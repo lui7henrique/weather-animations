@@ -14,6 +14,7 @@ export async function getWeather(city: string) {
 	const response = await openWeatherApi.get<WeatherResponse>("/", {
 		params: {
 			q: city,
+			units: "metric",
 		},
 	});
 

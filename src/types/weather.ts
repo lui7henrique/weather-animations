@@ -44,7 +44,7 @@ export type Sys = {
 
 export type Weather = {
 	id: number;
-	main: string;
+	main: "Thunderstorm" | "Drizzle" | "Rain" | "Snow" | "Clear" | "Clouds";
 	description: string;
 	icon: string;
 };

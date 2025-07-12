@@ -1,5 +1,3 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getForecast } from "../services/open-weather";
 import { weatherIcons } from "./weather-icons";
 
 const FORECAST = [

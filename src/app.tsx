@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { WeatherCard, WeatherCardSkeleton } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
 import { WeatherInput } from "./components/weather-input";

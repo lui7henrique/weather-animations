@@ -1,6 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
-import { Suspense } from "react";
 import { getWeather } from "../services/open-weather";
 import { cn } from "../utils/cn";
 import { getImage } from "../utils/get-image";
@@ -22,7 +21,7 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 		<motion.div
 			layoutId={`weather-card-${city}`}
 			className={cn(
-				"fixed inset-0 z-50 overflow-hidden sm:max-w-md sm:aspect-[9/16] sm:rounded-4xl sm:m-auto",
+				"fixed inset-0 z-50 overflow-hidden mt-24 rounded-t-4xl sm:max-w-md sm:aspect-[9/16] sm:rounded-4xl sm:m-auto",
 			)}
 			initial={{ opacity: 0, scale: 0.8 }}
 			animate={{

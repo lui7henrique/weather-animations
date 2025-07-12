@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Suspense, useState } from "react";
 import { WeatherCard } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
@@ -52,10 +52,20 @@ export function App() {
 
 			<AnimatePresence>
 				{showDetails && (
-					<WeatherDetails
-						city={selectedCity}
-						onClose={() => setShowDetails(false)}
-					/>
+					<>
+						<motion.div
+							className="fixed inset-0 bg-black/50 z-40"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							onClick={() => setShowDetails(false)}
+						/>
+
+						<WeatherDetails
+							city={selectedCity}
+							onClose={() => setShowDetails(false)}
+						/>
+					</>
 				)}
 			</AnimatePresence>
 		</div>

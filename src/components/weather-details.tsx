@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { motion, useAnimate } from "motion/react";
+import { motion, useAnimate, useDragControls } from "motion/react";
 import { getWeather } from "../services/open-weather";
 import { cn } from "../utils/cn";
 import { getImage } from "../utils/get-image";
@@ -18,6 +18,7 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 	});
 
 	const [scope, animate] = useAnimate();
+	const dragControls = useDragControls();
 
 	return (
 		<motion.div
@@ -38,6 +39,7 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 				transition: { duration: 0.3, ease: "easeInOut" },
 			}}
 			drag="y"
+			dragControls={dragControls}
 			dragConstraints={{ top: 0 }}
 			onDragEnd={(_, info) => {
 				const shouldClose = info.offset.y > 120 || info.velocity.y > 800;
@@ -72,7 +74,12 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 					transition: { duration: 0.4, ease: "easeInOut" },
 				}}
 			>
-				<div className="flex flex-col items-center text-primary pb-10 px-6 scrollbar-sm h-full overflow-y-auto">
+				<div
+					onPointerDown={(e) => dragControls.start(e)}
+					className="w-16 h-1 bg-background-muted rounded-full mx-auto mt-2 cursor-grab active:cursor-grabbing"
+				/>
+
+				<div className="flex flex-col items-center text-primary pb-10 px-6 scrollbar-sm h-full overflow-y-auto overscroll-none">
 					<h1 className="text-4xl font-medium text-shadow-md mt-20">
 						{weather.name}
 					</h1>

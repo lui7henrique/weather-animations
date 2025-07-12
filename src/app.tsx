@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { WeatherCard, WeatherCardSkeleton } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
 import { WeatherInput } from "./components/weather-input";
@@ -28,7 +28,7 @@ export function App() {
 		<div className={cn("h-screen")}>
 			<motion.section
 				className={cn(
-					"bg-background text-primary size-full ease-out flex items-center justify-center",
+					"bg-background text-primary size-full ease-out flex items-center justify-center overflow-hidden",
 				)}
 			>
 				<div className="space-y-4 max-w-md mx-auto w-full py-10 px-6 sm:px-0">

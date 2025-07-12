@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { getWeather } from "../services/open-weather";
 import { cn } from "../utils/cn";
 import { getImage } from "../utils/get-image";
+import { Weather10DayForecast } from "./weather-10-day-forecast";
 import { WeatherDailyForecast } from "./weather-daily-forecast";
 
 type WeatherDetailsProps = {
@@ -42,7 +43,7 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 			/>
 
 			<motion.div
-				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10"
+				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10 px-6 scrollbar-sm"
 				animate={{
 					opacity: 1,
 					scale: 1,
@@ -76,9 +77,8 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 					</p>
 				</div>
 
-				<Suspense fallback={<div />}>
-					<WeatherDailyForecast />
-				</Suspense>
+				<WeatherDailyForecast />
+				<Weather10DayForecast />
 			</motion.div>
 		</motion.div>
 	);

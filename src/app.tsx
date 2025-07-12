@@ -31,7 +31,7 @@ export function App() {
 					"bg-background text-primary size-full ease-out flex items-center justify-center",
 				)}
 			>
-				<div className="space-y-4 max-w-md mx-auto w-full py-10">
+				<div className="space-y-4 max-w-md mx-auto w-full py-10 px-6 sm:px-0">
 					<h1 className="text-4xl font-semibold">Weather</h1>
 
 					<WeatherInput />

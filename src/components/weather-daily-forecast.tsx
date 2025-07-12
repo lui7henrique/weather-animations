@@ -73,15 +73,13 @@ const FORECAST = [
 export function WeatherDailyForecast() {
 	return (
 		<div className="w-full">
-			<div className="mx-6 bg-background/20 backdrop-blur-md px-6 py-4 rounded-[18px] flex flex-col overflow-hidden">
+			<div className="bg-background/20 backdrop-blur-md px-6 py-4 rounded-[18px] flex flex-col overflow-hidden">
 				<p>
 					Partly cloudy conditions expected around 12:00. Wind gusts are up to
 					19 km/h.
 				</p>
 
-				<div className="border-b border-white/10 my-4" />
-
-				<div className="flex gap-10 overflow-x-auto touch-pan-x -mx-6 px-6 -mb-4 pb-4 scrollbar-sm">
+				<div className="flex gap-10 overflow-x-auto touch-pan-x -mx-6 px-6 -mb-4 pb-4 scrollbar-sm border-t border-white/10 pt-4 mt-4">
 					{FORECAST.map((forecast) => (
 						<div
 							key={forecast.day}

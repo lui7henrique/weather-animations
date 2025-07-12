@@ -46,7 +46,7 @@ export function WeatherCard({ city, ...props }: WeatherCardProps) {
 						</p>
 					</div>
 
-					<p className="text-primary text-6xl text-shadow-md">
+					<p className="text-primary text-6xl text-shadow-md tabular-nums">
 						{weather.main.temp.toFixed(0)}°
 					</p>
 				</div>
@@ -57,11 +57,11 @@ export function WeatherCard({ city, ...props }: WeatherCardProps) {
 					</p>
 
 					<div className="flex items-center gap-2">
-						<p className="text-secondary text-shadow-sm font-semibold">
+						<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
 							H:{weather.main.temp_max.toFixed(0)}°
 						</p>
 
-						<p className="text-secondary text-shadow-sm font-semibold">
+						<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
 							L:{weather.main.temp_min.toFixed(0)}°
 						</p>
 					</div>

@@ -14,8 +14,6 @@ const openWeatherApi = axios.create({
 });
 
 export async function getWeather(city: string) {
-	await new Promise((resolve) => setTimeout(resolve, 10_000));
-
 	const response = await openWeatherApi.get<WeatherResponse>("/", {
 		params: {
 			q: city,

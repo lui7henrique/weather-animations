@@ -1,5 +1,5 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { motion } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import { getWeather } from "../services/open-weather";
 import { cn } from "../utils/cn";
 import { getImage } from "../utils/get-image";
@@ -11,11 +11,13 @@ type WeatherDetailsProps = {
 	onClose: () => void;
 };
 
-export default function WeatherDetails({ city }: WeatherDetailsProps) {
+export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 	const { data: weather } = useSuspenseQuery({
 		queryKey: ["weather", city],
 		queryFn: () => getWeather(city),
 	});
+
+	const [scope, animate] = useAnimate();
 
 	return (
 		<motion.div
@@ -30,10 +32,26 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 				transition: { duration: 0.3, ease: "easeInOut" },
 			}}
 			exit={{
+				y: "100%",
 				opacity: 0,
 				scale: 0.8,
 				transition: { duration: 0.3, ease: "easeInOut" },
 			}}
+			drag="y"
+			dragConstraints={{ top: 0 }}
+			onDragEnd={(_, info) => {
+				const shouldClose = info.offset.y > 120 || info.velocity.y > 800;
+				if (shouldClose) {
+					onClose();
+				} else {
+					animate(
+						scope.current,
+						{ y: 0 },
+						{ type: "spring", stiffness: 300, damping: 30 },
+					);
+				}
+			}}
+			ref={scope}
 		>
 			<img
 				src={getImage(weather)}
@@ -54,6 +72,7 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 					transition: { duration: 0.4, ease: "easeInOut" },
 				}}
 			>
+				<div className="mx-auto my-2 h-1.5 w-12 rounded-full bg-zinc-300" />
 				<h1 className="text-4xl font-medium text-shadow-md mt-20">
 					{weather.name}
 				</h1>

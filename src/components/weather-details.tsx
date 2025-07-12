@@ -30,13 +30,13 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 			animate={{
 				opacity: 1,
 				scale: 1,
-				transition: { duration: 0.3, ease: "easeInOut" },
+				transition: { type: "spring", stiffness: 300, damping: 30 },
 			}}
 			exit={{
 				y: "100%",
 				opacity: 0,
 				scale: 0.8,
-				transition: { duration: 0.3, ease: "easeInOut" },
+				transition: { duration: 0.2, ease: "easeInOut" },
 			}}
 			drag="y"
 			dragControls={dragControls}
@@ -66,12 +66,12 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 				animate={{
 					opacity: 1,
 					scale: 1,
-					transition: { duration: 0.4, ease: "easeInOut" },
+					transition: { type: "spring", stiffness: 300, damping: 30 },
 				}}
 				exit={{
 					opacity: 0,
 					scale: 0.8,
-					transition: { duration: 0.4, ease: "easeInOut" },
+					transition: { duration: 0.25, ease: "easeInOut" },
 				}}
 			>
 				<div

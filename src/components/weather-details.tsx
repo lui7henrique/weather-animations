@@ -75,9 +75,11 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 				}}
 			>
 				<div
+					className="absolute top-0 left-0 w-full h-10"
 					onPointerDown={(e) => dragControls.start(e)}
-					className="w-16 h-1 bg-background-muted rounded-full mx-auto mt-2 cursor-grab active:cursor-grabbing"
-				/>
+				>
+					<div className="w-16 h-1 bg-background-muted rounded-full mx-auto mt-2 cursor-grab active:cursor-grabbing" />
+				</div>
 
 				<div className="flex flex-col items-center text-primary pb-10 px-6 scrollbar-sm h-full overflow-y-auto overscroll-none">
 					<h1 className="text-4xl font-medium text-shadow-md mt-20">

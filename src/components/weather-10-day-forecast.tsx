@@ -26,6 +26,42 @@ const FORECAST = [
 		max: 25,
 		icon: weatherIcons.clear,
 	},
+	{
+		day: "Wed",
+		min: 18,
+		max: 24,
+		icon: weatherIcons.rain,
+	},
+	{
+		day: "Thu",
+		min: 19,
+		max: 26,
+		icon: weatherIcons.clear,
+	},
+	{
+		day: "Fri",
+		min: 21,
+		max: 27,
+		icon: weatherIcons.clouds,
+	},
+	{
+		day: "Sat",
+		min: 20,
+		max: 25,
+		icon: weatherIcons.thunderstorm,
+	},
+	{
+		day: "Sun",
+		min: 19,
+		max: 24,
+		icon: weatherIcons.snow,
+	},
+	{
+		day: "Mon",
+		min: 18,
+		max: 23,
+		icon: weatherIcons.drizzle,
+	},
 ];
 
 export function Weather10DayForecast() {

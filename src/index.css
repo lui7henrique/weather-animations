@@ -69,3 +69,9 @@
 	--color-secondary: #faffff;
 	--font-sans: "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
 }
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	letter-spacing: 0.02em;
+}

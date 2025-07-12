@@ -1,7 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
 import { format } from "date-fns";
 import clear from "./assets/clear.webp";
 import rainy from "./assets/rainy.webp";
 import snow from "./assets/snow.webp";
+import { getWeather } from "./services/open-weather";
 
 const WEATHERS = [
 	{
@@ -33,7 +35,14 @@ const WEATHERS = [
 	},
 ];
 
-function App() {
+export function App() {
+	const { data: weather } = useQuery({
+		queryKey: ["weather"],
+		queryFn: () => getWeather("São Paulo"),
+	});
+
+	console.log(weather);
+
 	return (
 		<div className="flex flex-col items-center justify-center h-screen bg-background text-primary font-sans">
 			<section className="space-y-4 max-w-md mx-auto w-full">
@@ -83,5 +92,3 @@ function App() {
 		</div>
 	);
 }
-
-export default App;

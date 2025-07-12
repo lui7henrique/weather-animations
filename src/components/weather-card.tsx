@@ -70,3 +70,9 @@ export function WeatherCard({ city, ...props }: WeatherCardProps) {
 		</motion.div>
 	);
 }
+
+export function WeatherCardSkeleton() {
+	return (
+		<motion.div className="rounded-4xl w-full h-[136px] bg-foreground animate-pulse" />
+	);
+}

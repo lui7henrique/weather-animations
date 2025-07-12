@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import { Suspense, useState } from "react";
-import { WeatherCard } from "./components/weather-card";
+import { WeatherCard, WeatherCardSkeleton } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
 import { WeatherInput } from "./components/weather-input";
 import { cn } from "./utils/cn";
@@ -28,16 +28,16 @@ export function App() {
 		<div className={cn("h-screen")}>
 			<motion.section
 				className={cn(
-					"bg-background size-full ease-out flex items-center justify-center",
+					"bg-background text-primary size-full ease-out flex items-center justify-center",
 				)}
 			>
 				<div className="space-y-4 max-w-md mx-auto w-full py-10">
-					<h1 className="text-primary text-4xl font-semibold">Weather</h1>
+					<h1 className="text-4xl font-semibold">Weather</h1>
 
 					<WeatherInput />
 
 					{CITIES.map((city) => (
-						<Suspense key={city.id} fallback={<div>Loading...</div>}>
+						<Suspense key={city.id} fallback={<WeatherCardSkeleton />}>
 							<WeatherCard
 								city={city.name}
 								onClick={() => {
@@ -61,10 +61,12 @@ export function App() {
 							onClick={() => setShowDetails(false)}
 						/>
 
-						<WeatherDetails
-							city={selectedCity}
-							onClose={() => setShowDetails(false)}
-						/>
+						<Suspense fallback={<div />}>
+							<WeatherDetails
+								city={selectedCity}
+								onClose={() => setShowDetails(false)}
+							/>
+						</Suspense>
 					</>
 				)}
 			</AnimatePresence>

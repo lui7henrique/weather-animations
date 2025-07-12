@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import cloudy from "./assets/cloudy.png";
+import cloudy from "./assets/cloudy.webp";
 
 const WEATHERS = [
 	{
@@ -15,12 +15,12 @@ const WEATHERS = [
 
 function App() {
 	return (
-		<div className="flex flex-col items-center justify-center h-screen bg-background text-primary">
+		<div className="flex flex-col items-center justify-center h-screen bg-background text-primary font-sans">
 			<section className="space-y-4 max-w-md mx-auto w-full">
 				{WEATHERS.map((weather) => (
 					<div
 						key={weather.id}
-						className="bg-red-900 rounded-3xl p-4 w-full relative overflow-hidden"
+						className="bg-red-900 rounded-4xl px-6 py-4 w-full relative overflow-hidden"
 					>
 						<img
 							src={weather.image}
@@ -31,26 +31,26 @@ function App() {
 						<div className="relative z-10 flex flex-col gap-4">
 							<div className="flex items-center justify-between">
 								<div className="">
-									<h1 className="text-primary text-2xl font-bold text-shadow-lg">
+									<h1 className="text-primary text-2xl font-bold text-shadow-md">
 										{weather.name}
 									</h1>
 
-									<p className="text-primary text-sm">
+									<p className="text-secondary">
 										{format(new Date(), "HH:mm")}
 									</p>
 								</div>
 
-								<p className="text-primary text-5xl text-shadow-lg">
+								<p className="text-primary text-5xl text-shadow-md">
 									{weather.temperature}°C
 								</p>
 							</div>
 
 							<div className="flex items-center justify-between">
-								<p className="text-primary text-shadow-lg font-semibold">
+								<p className="text-secondary text-shadow-sm font-medium">
 									{weather.description}
 								</p>
 
-								<p className="text-primary text-shadow-md font-medium">
+								<p className="text-secondary text-shadow-sm font-medium">
 									H:{weather.high}°C / L:{weather.low}°C
 								</p>
 							</div>

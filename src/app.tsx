@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { WeatherCard, WeatherCardSkeleton } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
 import { WeatherInput } from "./components/weather-input";
@@ -23,6 +23,18 @@ const CITIES = [
 export function App() {
 	const [showDetails, setShowDetails] = useState(false);
 	const [selectedCity, setSelectedCity] = useState("");
+
+	useEffect(() => {
+		if (showDetails) {
+			document.body.style.overflow = "hidden";
+			document.body.style.scrollBehavior = "none";
+
+			return () => {
+				document.body.style.overflow = "";
+				document.body.style.scrollBehavior = "smooth";
+			};
+		}
+	}, [showDetails]);
 
 	return (
 		<div className={cn("h-screen")}>

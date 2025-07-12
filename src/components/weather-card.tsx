@@ -1,42 +1,32 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDate } from "date-fns";
-
-import clear from "../assets/clear.webp";
-import cloudy from "../assets/cloudy.webp";
-import drizzle from "../assets/drizzle.webp";
-import rainy from "../assets/rainy.webp";
-import snow from "../assets/snow.webp";
-import thunderstorm from "../assets/thunderstorm.webp";
-
+import { motion } from "motion/react";
+import type { ComponentProps } from "react";
+import { ANIMATION_DURATION } from "../constants/animation";
 import { getWeather } from "../services/open-weather";
-import type { WeatherResponse } from "../types/weather";
+import { getImage } from "../utils/get-image";
 
 type WeatherCardProps = {
 	city: string;
-};
+} & ComponentProps<typeof motion.div>;
 
-export function WeatherCard({ city }: WeatherCardProps) {
+export function WeatherCard({ city, ...props }: WeatherCardProps) {
 	const { data: weather } = useSuspenseQuery({
 		queryKey: ["weather", city],
 		queryFn: () => getWeather(city),
 	});
 
-	function getImage(weather: WeatherResponse) {
-		const weatherType = weather.weather[0].main.toLowerCase();
-
-		if (weatherType.includes("snow")) return snow;
-		if (weatherType.includes("thunderstorm")) return thunderstorm;
-		if (weatherType.includes("clouds")) return cloudy;
-		if (weatherType.includes("rain")) return rainy;
-		if (weatherType.includes("drizzle")) return drizzle;
-
-		return clear;
-	}
-
 	return (
-		<div
+		<motion.div
 			key={weather.id}
+			layoutId={`weather-card-${city}`}
 			className="rounded-4xl px-6 py-4 w-full relative overflow-hidden cursor-pointer"
+			whileTap={{
+				scale: 0.93,
+				transition: { duration: ANIMATION_DURATION, ease: "easeInOut" },
+			}}
+			transition={{ duration: ANIMATION_DURATION, ease: "easeInOut" }}
+			{...props}
 		>
 			<img
 				src={getImage(weather)}
@@ -77,6 +67,6 @@ export function WeatherCard({ city }: WeatherCardProps) {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }

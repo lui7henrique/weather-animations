@@ -1,8 +1,9 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
+import { Suspense } from "react";
 import { getWeather } from "../services/open-weather";
 import { getImage } from "../utils/get-image";
-import { WeatherDetailsDescription } from "./weather-details-description";
+import { WeatherDailyForecast } from "./weather-daily-forecast";
 
 type WeatherDetailsProps = {
 	city: string;
@@ -74,7 +75,9 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 					</p>
 				</div>
 
-				<WeatherDetailsDescription />
+				<Suspense fallback={<div />}>
+					<WeatherDailyForecast />
+				</Suspense>
 			</motion.div>
 		</motion.div>
 	);

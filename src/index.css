@@ -65,6 +65,7 @@
 
 @theme {
 	--color-background: #000;
+	--color-foreground: #1e1c20;
 	--color-primary: #fff;
 	--color-secondary: #faffff;
 	--color-tertiary: #9b9ba2;

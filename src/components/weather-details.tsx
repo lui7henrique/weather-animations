@@ -33,11 +33,11 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 			<img
 				src={getImage(weather)}
 				alt=""
-				className="w-full h-full object-cover absolute top-0 left-0 opacity-10"
+				className="w-full h-full object-cover absolute top-0 left-0"
 			/>
 
 			<motion.div
-				className="relative z-10 p-6 flex flex-col gap-5 text-primary"
+				className="relative z-10 flex flex-col items-center text-primary"
 				animate={{
 					opacity: 1,
 					scale: 1,
@@ -49,17 +49,26 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 					transition: { duration: 0.4, ease: "easeInOut" },
 				}}
 			>
-				<h1 className="text-3xl font-bold text-shadow-md">{weather.name}</h1>
+				<h1 className="text-4xl font-bold text-shadow-md mt-20">
+					{weather.name}
+				</h1>
+
 				<p className="text-8xl text-shadow-md">
 					{weather.main.temp.toFixed(0)}°
 				</p>
+
 				<p className="text-secondary text-shadow-sm font-semibold capitalize">
 					{weather.weather[0].description}
 				</p>
-				<div className="flex flex-col gap-2 text-secondary text-shadow-sm font-semibold">
-					<p>Feels like: {weather.main.feels_like.toFixed(0)}°</p>
-					<p>Humidity: {weather.main.humidity}%</p>
-					<p>Wind: {weather.wind.speed} m/s</p>
+
+				<div className="flex items-center gap-2">
+					<p className="text-secondary text-shadow-sm font-semibold">
+						H:{weather.main.temp_max.toFixed(0)}°
+					</p>
+
+					<p className="text-secondary text-shadow-sm font-semibold">
+						L:{weather.main.temp_min.toFixed(0)}°
+					</p>
 				</div>
 			</motion.div>
 		</motion.div>

@@ -3,6 +3,7 @@ import { Suspense, useState } from "react";
 import { WeatherCard } from "./components/weather-card";
 import WeatherDetails from "./components/weather-details";
 import { WeatherInput } from "./components/weather-input";
+import { cn } from "./utils/cn";
 
 const CITIES = [
 	{
@@ -24,30 +25,29 @@ export function App() {
 	const [selectedCity, setSelectedCity] = useState("");
 
 	return (
-		<div className="flex flex-col items-center justify-center h-screen text-primary font-sans bg-black">
+		<div className={cn("h-screen")}>
 			<motion.section
-				className="space-y-4 max-w-md mx-auto w-full py-10 bg-red-500"
-				animate={
-					showDetails ? { opacity: 0.2, scale: 0.9 } : { opacity: 1, scale: 1 }
-				}
-				transition={{ duration: 0.2, ease: "easeInOut" }}
-				onClick={() => setShowDetails(true)}
+				className={cn(
+					"bg-background size-full ease-out flex items-center justify-center",
+				)}
 			>
-				<h1 className="text-primary text-4xl font-semibold">Weather</h1>
+				<div className="space-y-4 max-w-md mx-auto w-full py-10">
+					<h1 className="text-primary text-4xl font-semibold">Weather</h1>
 
-				<WeatherInput />
+					<WeatherInput />
 
-				{CITIES.map((city) => (
-					<Suspense key={city.id} fallback={<div>Loading...</div>}>
-						<WeatherCard
-							city={city.name}
-							onClick={() => {
-								setSelectedCity(city.name);
-								setShowDetails(true);
-							}}
-						/>
-					</Suspense>
-				))}
+					{CITIES.map((city) => (
+						<Suspense key={city.id} fallback={<div>Loading...</div>}>
+							<WeatherCard
+								city={city.name}
+								onClick={() => {
+									setSelectedCity(city.name);
+									setShowDetails(true);
+								}}
+							/>
+						</Suspense>
+					))}
+				</div>
 			</motion.section>
 
 			<AnimatePresence>

@@ -1,18 +1,10 @@
-import {
-	Cloud,
-	CloudLightning,
-	CloudRain,
-	CloudSnow,
-	type LucideIcon,
-	Sun,
-} from "lucide-react";
+import { Cloud, CloudLightning, CloudRain, CloudSnow, Sun } from "lucide-react";
 
-type WeatherIcons = Record<string, LucideIcon>;
-
-export const weatherIcons: WeatherIcons = {
+export const weatherIcons = {
 	clouds: Cloud,
 	rain: CloudRain,
 	clear: Sun,
 	thunderstorm: CloudLightning,
 	snow: CloudSnow,
+	drizzle: CloudRain,
 };

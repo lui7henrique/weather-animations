@@ -2,6 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
 import { Suspense } from "react";
 import { getWeather } from "../services/open-weather";
+import { cn } from "../utils/cn";
 import { getImage } from "../utils/get-image";
 import { WeatherDailyForecast } from "./weather-daily-forecast";
 
@@ -16,12 +17,12 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 		queryFn: () => getWeather(city),
 	});
 
-	console.log({ weather });
-
 	return (
 		<motion.div
 			layoutId={`weather-card-${city}`}
-			className="fixed inset-0 z-50 max-w-md m-auto rounded-4xl overflow-hidden aspect-[9/16]"
+			className={cn(
+				"fixed inset-0 z-50 overflow-hidden sm:max-w-md sm:aspect-[9/16] sm:rounded-4xl sm:m-auto",
+			)}
 			initial={{ opacity: 0, scale: 0.8 }}
 			animate={{
 				opacity: 1,
@@ -41,7 +42,7 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 			/>
 
 			<motion.div
-				className="relative z-10 flex flex-col items-center text-primary"
+				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10"
 				animate={{
 					opacity: 1,
 					scale: 1,
@@ -65,7 +66,7 @@ export default function WeatherDetails({ city }: WeatherDetailsProps) {
 					{weather.weather[0].description}
 				</p>
 
-				<div className="flex items-center gap-2">
+				<div className="flex items-center gap-2 mb-[94px]">
 					<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
 						H:{weather.main.temp_max.toFixed(0)}°
 					</p>

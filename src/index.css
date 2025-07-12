@@ -77,3 +77,22 @@
 	-moz-osx-font-smoothing: grayscale;
 	letter-spacing: 0.02em;
 }
+
+@layer utilities {
+	.scrollbar-sm {
+		scrollbar-width: thin; /* Firefox */
+		scrollbar-color: var(--color-zinc-300) transparent; /* Firefox */
+	}
+
+	.scrollbar-sm::-webkit-scrollbar {
+		width: 6px;
+		height: 6px; /* Chrome/Safari/Edge */
+	}
+	.scrollbar-sm::-webkit-scrollbar-thumb {
+		background: var(--color-zinc-300);
+		border-radius: 9999px;
+	}
+	.scrollbar-sm::-webkit-scrollbar-track {
+		background: transparent;
+	}
+}

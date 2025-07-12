@@ -60,7 +60,7 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 			/>
 
 			<motion.div
-				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10 px-6 scrollbar-sm"
+				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10 px-6 scrollbar-sm overscroll-y-none"
 				animate={{
 					opacity: 1,
 					scale: 1,

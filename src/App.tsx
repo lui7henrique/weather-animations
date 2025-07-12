@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { WeatherCard } from "./components/weather-card";
+import { WeatherInput } from "./components/weather-input";
 
 const CITIES = [
 	{
@@ -21,6 +22,7 @@ export function App() {
 		<div className="flex flex-col items-center justify-center h-screen bg-background text-primary font-sans">
 			<section className="space-y-4 max-w-md mx-auto w-full overflow-y-auto py-10">
 				<h1 className="text-primary text-4xl font-semibold">Weather</h1>
+				<WeatherInput />
 
 				{CITIES.map((city) => (
 					<Suspense key={city.id} fallback={<div>Loading...</div>}>

@@ -23,7 +23,7 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 		<motion.div
 			layoutId={`weather-card-${city}`}
 			className={cn(
-				"fixed inset-0 z-50 overflow-hidden mt-24 rounded-t-4xl sm:max-w-md sm:aspect-[9/16] sm:rounded-4xl sm:m-auto",
+				"fixed inset-0 z-50 mt-24 rounded-t-4xl sm:max-w-md sm:aspect-[9/16] sm:rounded-4xl sm:m-auto overflow-hidden",
 			)}
 			initial={{ opacity: 0, scale: 0.8 }}
 			animate={{
@@ -60,7 +60,7 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 			/>
 
 			<motion.div
-				className="relative z-10 flex flex-col items-center text-primary overflow-y-auto h-full pb-10 px-6 scrollbar-sm overscroll-y-none"
+				className="relative h-full"
 				animate={{
 					opacity: 1,
 					scale: 1,
@@ -72,31 +72,32 @@ export default function WeatherDetails({ city, onClose }: WeatherDetailsProps) {
 					transition: { duration: 0.4, ease: "easeInOut" },
 				}}
 			>
-				<div className="mx-auto my-2 h-1.5 w-12 rounded-full bg-zinc-300" />
-				<h1 className="text-4xl font-medium text-shadow-md mt-20">
-					{weather.name}
-				</h1>
+				<div className="flex flex-col items-center text-primary pb-10 px-6 scrollbar-sm h-full overflow-y-auto">
+					<h1 className="text-4xl font-medium text-shadow-md mt-20">
+						{weather.name}
+					</h1>
 
-				<p className="text-8xl text-shadow-md tabular-nums">
-					{weather.main.temp.toFixed(0)}°
-				</p>
-
-				<p className="text-secondary text-shadow-sm font-semibold capitalize text-xl">
-					{weather.weather[0].description}
-				</p>
-
-				<div className="flex items-center gap-2 mb-[94px]">
-					<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
-						H:{weather.main.temp_max.toFixed(0)}°
+					<p className="text-8xl text-shadow-md tabular-nums">
+						{weather.main.temp.toFixed(0)}°
 					</p>
 
-					<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
-						L:{weather.main.temp_min.toFixed(0)}°
+					<p className="text-secondary text-shadow-sm font-semibold capitalize text-xl">
+						{weather.weather[0].description}
 					</p>
+
+					<div className="flex items-center gap-2 mb-[94px]">
+						<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
+							H:{weather.main.temp_max.toFixed(0)}°
+						</p>
+
+						<p className="text-secondary text-shadow-sm font-semibold tabular-nums">
+							L:{weather.main.temp_min.toFixed(0)}°
+						</p>
+					</div>
+
+					<WeatherDailyForecast />
+					<Weather10DayForecast />
 				</div>
-
-				<WeatherDailyForecast />
-				<Weather10DayForecast />
 			</motion.div>
 		</motion.div>
 	);

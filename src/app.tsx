@@ -18,6 +18,10 @@ const CITIES = [
 		id: 3,
 		name: "Cairo",
 	},
+	{
+		id: 4,
+		name: "Caxias do Sul",
+	},
 ];
 
 export function App() {
